@@ -1,0 +1,12 @@
+# Общие настройки
+root = true
+
+[*]
+insert_final_newline = true
+charset = utf-8
+indent_style = tab
+indent_size = 2
+
+# Настройки для конкретных типов файлов
+[*.md]
+trim_trailing_whitespace = false
