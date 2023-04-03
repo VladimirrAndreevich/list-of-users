@@ -3,8 +3,14 @@ import { useState } from "react";
 function User(props) {
 	const [isHover, setIsHover] = useState(false);
 
+	const [isDisappearing, setIsDisappearing] = useState(false);
+
 	const onClickHandler = () => {
-		props.onDeleteUser(props.id);
+		setIsDisappearing(true);
+		// props.onDeleteUser(props.id);
+		setTimeout(() => {
+			props.onDeleteUser(props.id);
+		}, 600);
 	};
 
 	const onMouseEnterHanlder = () => {
@@ -16,7 +22,7 @@ function User(props) {
 
 	return (
 		<li
-			className="users__item"
+			className={`users__item ${isDisappearing ? "users__item_dying" : ""}`}
 			onMouseEnter={onMouseEnterHanlder}
 			onMouseLeave={onMouseLeaveHanlder}
 		>

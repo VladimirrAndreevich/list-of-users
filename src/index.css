@@ -98,18 +98,11 @@ button {
 	overflow: hidden;
 
 	animation: itemAppear 1s ease;
-
-	/* transition-property: margin-top height padding border;
-	transition-duration: 0.8s;
-	transition-timing-function: ease; */
 }
 
-/* .users__item_dying {
-	margin-top: 0;
-	height: 0;
-	padding: 0;
-	border: none;
-} */
+.users__item_dying {
+	animation: itemDisappear 0.6s ease forwards;
+}
 
 @keyframes itemAppear {
 	0% {
@@ -129,6 +122,28 @@ button {
 	}
 	100% {
 		opacity: 1;
+	}
+}
+
+@keyframes itemDisappear {
+	0% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0;
+	}
+	71% {
+		margin-top: 10px;
+		height: 40px;
+		padding: 10px;
+		opacity: 0;
+	}
+	100% {
+		margin-top: 0px;
+		height: 0px;
+		border: 0;
+		padding: 0;
+		opacity: 0;
 	}
 }
 
