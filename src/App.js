@@ -8,6 +8,8 @@ const App = () => {
 	const [usersDate, setUsersDate] = useState([
 		{ name: "Alex", age: 21, id: 0 },
 		{ name: "Max", age: 44, id: 1 },
+		{ name: "John", age: 35, id: 2 },
+		{ name: "Sarah", age: 29, id: 3 },
 	]);
 
 	const addUserHandler = (newUser) => {

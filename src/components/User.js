@@ -28,7 +28,9 @@ function User(props) {
 		>
 			{props.name} ({props.age} years old)
 			<div
-				className={`users__close-btn ${isHover && "users__close-btn_active"}`}
+				className={`users__close-btn ${
+					isHover ? "users__close-btn_active" : ""
+				}`}
 				onClick={onClickHandler}
 			></div>
 		</li>

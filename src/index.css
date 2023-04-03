@@ -100,8 +100,15 @@ button {
 	animation: itemAppear 1s ease;
 }
 
+/* .users__item:first-child {
+	animation: itemAppearForFirstChild 1s ease;
+} */
+
 .users__item_dying {
 	animation: itemDisappear 0.6s ease forwards;
+}
+.users__item_dying:first-child {
+	animation: itemDisappearForFirstChild 0.6s ease forwards;
 }
 
 @keyframes itemAppear {
@@ -113,6 +120,25 @@ button {
 	}
 	70% {
 		margin-top: 10px;
+		padding: 0;
+		height: 40px;
+		opacity: 0;
+	}
+	71% {
+		padding: 10px;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes itemAppearForFirstChild {
+	0% {
+		padding: 0;
+		height: 0px;
+		opacity: 0;
+	}
+	70% {
 		padding: 0;
 		height: 40px;
 		opacity: 0;
@@ -140,6 +166,25 @@ button {
 	}
 	100% {
 		margin-top: 0px;
+		height: 0px;
+		border: 0;
+		padding: 0;
+		opacity: 0;
+	}
+}
+@keyframes itemDisappearForFirstChild {
+	0% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0;
+	}
+	71% {
+		height: 40px;
+		padding: 10px;
+		opacity: 0;
+	}
+	100% {
 		height: 0px;
 		border: 0;
 		padding: 0;
