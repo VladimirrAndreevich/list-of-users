@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Warning from "./Warning";
 
 function NewUserForm(props) {
@@ -7,8 +7,11 @@ function NewUserForm(props) {
 		return regex.test(str);
 	}
 
-	const [enteredName, setEnteredName] = useState("");
-	const [enteredAge, setEnteredAge] = useState("");
+	const nameInputRef = useRef();
+	const ageInputRef = useRef();
+
+	// const [enteredName, setEnteredName] = useState("");
+	// const [enteredAge, setEnteredAge] = useState("");
 
 	const [isShowWarning, setIsShowWarning] = useState(false);
 
@@ -19,6 +22,9 @@ function NewUserForm(props) {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
+
+		const enteredName = nameInputRef.current.value;
+		const enteredAge = ageInputRef.current.value;
 
 		if (enteredName.trim().length === 0) {
 			setWarning({
@@ -56,8 +62,11 @@ function NewUserForm(props) {
 				age: enteredAge,
 			};
 			props.onSaveUser(newUser);
-			setEnteredName("");
-			setEnteredAge("");
+
+			nameInputRef.current.value = "";
+			ageInputRef.current.value = "";
+			// setEnteredName("");
+			// setEnteredAge("");
 		}
 	};
 
@@ -65,12 +74,12 @@ function NewUserForm(props) {
 		setIsShowWarning(false);
 	};
 
-	const nameChangeHandler = (event) => {
-		setEnteredName(event.target.value);
-	};
-	const ageChangeHandler = (event) => {
-		setEnteredAge(event.target.value);
-	};
+	// const nameChangeHandler = (event) => {
+	// 	setEnteredName(event.target.value);
+	// };
+	// const ageChangeHandler = (event) => {
+	// 	setEnteredAge(event.target.value);
+	// };
 
 	return (
 		<>
@@ -88,18 +97,20 @@ function NewUserForm(props) {
 					type="text"
 					name="name"
 					className="new-user-form__input"
-					value={enteredName}
-					onChange={nameChangeHandler}
+					// value={enteredName}
+					// onChange={nameChangeHandler}
+					ref={nameInputRef}
 				/>
 				<label className="new-user-form__label">Age (Years)</label>
 				<input
 					type="number"
 					name="age"
-					// min="0"
-					// max="150"
+					min="0"
+					max="150"
 					className="new-user-form__input"
-					value={enteredAge}
-					onChange={ageChangeHandler}
+					// value={enteredAge}
+					// onChange={ageChangeHandler}
+					ref={ageInputRef}
 				/>
 				<button type="submit">Add User</button>
 			</form>
