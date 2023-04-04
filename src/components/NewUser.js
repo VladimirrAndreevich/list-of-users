@@ -1,12 +1,11 @@
 import React, { useState, useRef } from "react";
 import Warning from "./Warning";
 
+function hasNumbers(str) {
+	const regex = /\d/;
+	return regex.test(str);
+}
 function NewUserForm(props) {
-	function hasNumbers(str) {
-		const regex = /\d/;
-		return regex.test(str);
-	}
-
 	const nameInputRef = useRef();
 	const ageInputRef = useRef();
 
